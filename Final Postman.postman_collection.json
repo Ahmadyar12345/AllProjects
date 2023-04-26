@@ -1,0 +1,256 @@
+{
+	"info": {
+		"_postman_id": "3df635f3-b45d-4e02-8b9b-2c6910a3a45b",
+		"name": "Final Postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26467480"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response = pm.response.json()\r",
+							"pm.globals.set(\"id\", response.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 800ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(800);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Name is Aman25\", function(){\r",
+							"    pm.expect(response.name).to.eql(\"Aman25\")\r",
+							"})\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "fcff48162e2e93a409245e408fce7fc42bdd23f7e413323a71bf1d04e5cfe9a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Aman25\",\r\n    \"email\": \"aman0210@gmail.com\",\r\n    \"gender\": \"male\",\r\n    \"status\": \"active\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/users",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 400ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "fcff48162e2e93a409245e408fce7fc42bdd23f7e413323a71bf1d04e5cfe9a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Aman25\",\r\n    \"email\": \"aman210@gmail.com\",\r\n    \"gender\": \"male\",\r\n    \"status\": \"active\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/users/{{id}}",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 400ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "fcff48162e2e93a409245e408fce7fc42bdd23f7e413323a71bf1d04e5cfe9a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Aman2024\",\r\n    \"email\": \"Aaman2021@gmail.com\",\r\n    \"gender\": \"male\",\r\n    \"status\": \"active\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/users/{{id}}",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 400ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "fcff48162e2e93a409245e408fce7fc42bdd23f7e413323a71bf1d04e5cfe9a3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Aman25\",\r\n    \"email\": \"aman210@gmail.com\",\r\n    \"gender\": \"male\",\r\n    \"status\": \"active\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://gorest.co.in/public/v2/users/{{id}}",
+					"protocol": "https",
+					"host": [
+						"gorest",
+						"co",
+						"in"
+					],
+					"path": [
+						"public",
+						"v2",
+						"users",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
